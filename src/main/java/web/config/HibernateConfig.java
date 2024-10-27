@@ -13,10 +13,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
 import javax.sql.DataSource;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -64,12 +61,9 @@ public class HibernateConfig {
     @Bean
     public Properties getHibernateProperties() {
         Properties props = new Properties();
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream("db.properties");
-        try {
-            props.load(is);
-            return props;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        props.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        return props;
     }
 }
