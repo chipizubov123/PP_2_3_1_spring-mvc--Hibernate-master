@@ -64,7 +64,7 @@ public class HibernateConfig {
     @Bean
     public Properties getHibernateProperties() {
         Properties props = new Properties();
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream("hibernate.properties");
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("db.properties");
         try {
             props.load(is);
             return props;
