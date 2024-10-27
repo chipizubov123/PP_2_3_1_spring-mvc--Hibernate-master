@@ -6,13 +6,11 @@ import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Transactional
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
